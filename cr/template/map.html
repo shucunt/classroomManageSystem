@@ -1,0 +1,173 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>result</title>
+<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href='http://fonts.useso.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link href='http://fonts.useso.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<!--slider-->
+<link rel="stylesheet" href="/static/css/flexslider.css" type="text/css" media="all" />
+<script src="/static/js/modernizr.js"></script>
+
+
+<!--baidu map-->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4">
+		</script>
+<style type="text/css">
+#container{
+    position:absolute;
+	top:20%;
+	left:10%;
+	width:64%;
+	height:64%;
+    border:3px solid #C7C7C7;
+}
+</style>
+
+<!-- jQuery -->
+ <script src="/static/js/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.min.js">\x3C/script>')</script>
+  <!-- FlexSlider -->
+  <script defer src="/static/js/jquery.flexslider.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      SyntaxHighlighter.all();
+    });
+    $(window).load(function(){
+      $('.flexslider').flexslider({
+        animation: "slide",
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+   <div class="header">
+	    <div class="header-top">
+			<div class="wrap"> 
+				    <div class="logo">
+						<a href="/select/"><img src="/static/images/logo.png" alt=""/></a>
+					</div>
+					<div class="personal">
+						<form action="/personal/" method="get">
+						  	<input type="submit" value="个人中心" />
+						</form>
+						<form action="/logout/" method="get">
+						  	<input type="submit" value="登出" />
+						</form>
+					</div>
+				    <div class="clear"></div> 
+				</div>
+		</div>
+		<div class="header-bottom">
+			  <div class="wrap"> 
+			      <div class="top-nav">
+						<ul>
+							<div class="col_1_of_5 span_1_of_5">
+                            <div class="item_content1">
+        						<div class="more">
+        							<a href="{%url 'result' a1 %}" class="btn">正心</a>
+        						</div>
+        					 </div>
+                            </div>
+                            <div class="col_1_of_5 span_1_of_5">
+                            <div class="item_content2">
+        						<div class="more">
+        							<a href="{%url 'result' a2 %}" class="btn">致知</a>
+        						</div>
+        					 </div>
+                            </div>
+                            <div class="col_1_of_5 span_1_of_5">
+							<div class="item_content3">
+        						<div class="more">
+        							<a href="{%url 'result' a3 %}" class="btn1">诚意</a>
+        						</div>
+                            </div>
+        					 </div> 
+                            <div class="col_1_of_5 span_1_of_5">
+							<div class="item_content4">
+        						<div class="more">
+        							<a href="{%url 'result' a4 %}" class="btn2">主楼</a>
+        						</div>
+        					 </div>
+                            </div>
+						</ul>
+					</div>
+	    			<div class="clear"></div>	
+	   		 </div>
+  		</div>
+    </div>
+	<div class="map1">
+	 	<div id="container"></div>
+		<script type="text/javascript">
+			var map = new BMap.Map("container");//在container容器中创建一个地图,参数container为div的id属性;
+			var point = new BMap.Point(126.6390920000,45.7513770000);//定位
+			var pointZhengXin = new BMap.Point(126.6378510000,45.7495410000);
+			var pointZhiZhi = new BMap.Point(126.6395370000,45.7501410000);
+			var pointChengYi = new BMap.Point(126.6412140000,45.7487370000);
+			var pointZhuLou = new BMap.Point(126.6391540000,45.7534070000);
+			map.centerAndZoom(point,17);				//将point移到浏览器中心，并且地图大小调整为15;
+			map.addControl(new BMap.NavigationControl());
+			map.addControl(new BMap.MapTypeControl());
+			map.addControl(new BMap.ScaleControl());
+
+			var markerZhengXin = new BMap.Marker(pointZhengXin);
+			var markerZhiZhi =  new BMap.Marker(pointZhiZhi);
+			var markerChengYi = new BMap.Marker(pointChengYi);
+			var markerZhuLou = new BMap.Marker(pointZhuLou);
+			map.addOverlay(markerZhengXin);
+			map.addOverlay(markerZhuLou);
+			map.addOverlay(markerZhiZhi);
+			map.addOverlay(markerChengYi);
+			markerZhengXin.addEventListener("click", function(){
+				onClick=jmpZhengxin();
+			});
+			function jmpZhengxin(){
+				window.location.href="{%url 'result' a1%}";
+			}
+			markerZhiZhi.addEventListener("click", function(){
+				onClick=jmpZhizhi();
+			});
+			function jmpZhizhi(){
+				window.location.href="{%url 'result' a2%}";
+			}
+			markerChengYi.addEventListener("click", function(){
+				onClick=jmpChengyi();
+			});
+			function jmpChengyi(){
+				window.location.href="{%url 'result' a3%}";
+			}
+			markerZhuLou.addEventListener("click", function(){
+				onClick=jmpZhulou();
+			});
+			function jmpZhulou(){
+				window.location.href="{%url 'result' a4%}";
+			}
+		</script>
+	 </div>
+	 <div class="footer">
+		<div class="wrap">
+	       <div class="footer-top" width = "100%">
+						<ul>
+							<table width=20%>
+								<tr>
+								<td><a href="/aboutus/">About us</a></td>
+
+							</tr>
+							</table>
+						</ul>
+					
+			</div>
+			
+		</div>
+	</div>
+</body>
+</html>
+
+    	
+    	
+            

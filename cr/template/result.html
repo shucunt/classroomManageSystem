@@ -1,0 +1,166 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>result</title>
+<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href='http://fonts.useso.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link href='http://fonts.useso.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<!--slider-->
+<link rel="stylesheet" href="/static/css/flexslider.css" type="text/css" media="all" />
+<script src="js/modernizr.js"></script>
+<!-- jQuery -->
+ <script src="js/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="/static/js/libs/jquery-1.7.min.js">\x3C/script>')</script>
+  <!-- FlexSlider -->
+  <script defer src="/static/js/jquery.flexslider.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      SyntaxHighlighter.all();
+    });
+    $(window).load(function(){
+      $('.flexslider').flexslider({
+        animation: "slide",
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+      });
+    });
+  </script>
+<style type="text/css">
+#first{
+    height:78%;
+    width:19%;
+    margin:3%;
+    float:left;
+    background:#9fc4e8;
+}
+#second{
+    height:78%;
+    width:19%;
+    margin:3%;
+    float:left;
+    background:#9fc4e8;
+}
+#third{
+    height:78%;
+    width:19%;
+    margin:3%;
+    float:left;
+    background:#9fc4e8;
+}
+#fourth{
+    height:78%;
+    width:19%;
+    margin:3%;
+    float:left;
+    background:#9fc4e8;
+}
+</style>
+</head>
+<body>
+   <div class="header">
+	    <div class="header-top">
+			<div class="wrap"> 
+				    <div class="logo">
+						<a href="/select/"><img src="/static/images/logo.png" alt=""/></a>
+					</div>
+					<div class="personal">
+						<form action="/personal/" method="get">
+						  	<input type="submit" value="个人中心" />
+						</form>
+ 						<form action="/logout/" method="get">
+						  	<input type="submit" value="登出" />
+						</form>
+					</div>
+				    <div class="clear"></div> 
+				</div>
+		</div>
+		<div class="header-bottom">
+			  <div class="wrap"> 
+			      <div class="top-nav">
+						<ul>
+							<li><a href="{%url 'result' a1 %}" >正心</a></li>
+							<li><a href="{%url 'result' a2 %}" >致知</a></li> 
+							<li><a href="{%url 'result' a3 %}" >诚意</a></li> 
+							<li><a href="{%url 'result' a4 %}" >主楼</a></li> 
+						</ul>
+					</div>
+	    			<div class="clear"></div>	
+	   		 </div>
+  		</div>
+  	</div>
+	 <div class = "result">
+     <p>查询结果</p>
+         <div id="first">一、二节
+    	 	{%for id in id1%}
+    	 	{%for key,value in id.items %}
+            <a href={%url 'detail' value %}><h1>{{key}}</h1></a>
+            {%endfor%}
+            {%endfor%}
+        </div>
+        <div id="second">三、四节
+    	 	{%for id in id2%}
+    	 	{%for key,value in id.items %}
+            <a href={%url 'detail' value %}><h1>{{key}}</h1></a>
+            {%endfor%}
+            {%endfor%}
+        </div>
+         <div id="third">五、六节
+    	 	{%for id in id3%}
+    	 	{%for key,value in id.items %}
+            <a href={%url 'detail' value %}><h1>{{key}}</h1></a>
+            {%endfor%}
+            {%endfor%}
+        </div>
+        <div id="fourth">七、八节
+    	 	{%for id in id4%}
+    	 	{%for key,value in id.items %}
+            <a href={%url 'detail' value %}><h1>{{key}}</h1></a>
+            {%endfor%}
+            {%endfor%}
+        </div>
+	 </div>
+	 <div class = "recommend">
+        <div>{{standard}}</div>
+	 	<p>推荐</p>
+        {% if fla %}
+        {% for ro in rooms%}
+            {%for key,value in ro.items %}
+            <a href={%url 'detail' value %}><h1>{{key}}</h1></a>
+            {%endfor%}
+        {%endfor%}
+        {% else %}
+            <h1>{{nroom}}</h1>
+            {% for ro in rooms%}
+                {%for key,value in ro.items %}
+                <a href={%url 'detail' value %}><h1>{{key}}</h1></a>
+            {%endfor%}
+        {%endfor%}
+        {% endif %}
+        
+	 </div>
+	 <div class="footer">
+		<div class="wrap">
+	       <div class="footer-top" width = "100%">
+						<ul>
+							<table width=20%>
+								<tr>
+								<td>Information</td>
+								<td><a href="/aboutus/">About us</a></td>
+
+							</tr>
+							</table>
+						</ul>
+					
+			</div>
+			
+		</div>
+	</div>
+</body>
+</html>
+
+    	
+    	
+            
